@@ -27,7 +27,7 @@ pip install -r requirment.txt
      - save the data processed in ``` training_processed.csv``` and ```validation_processed.csv```
  
 
-- ## training Notebook Or training.py 
+- ## Training Notebook Or training.py 
   - Both have the same code 
   - ### trainig steps
 
@@ -43,5 +43,32 @@ pip install -r requirment.txt
       - using grid search technique try to search for best combinatio of c and gamma parameters of SVM and with some hand searching i choosed gamma = 0.0004 and c=0.1 (meaning of these values that  that i want the model to give the priority to choose good hyperplane rather than classify correctly on train data (beacuase i belive have large noise))
     - ### Performance Criteria
          - To judge the classifier i will not take intp account accuracy because it can be misleading because the data is unbalanced i will compute f1 scores (because f1 score take into account recall and precision for specific class ) for both classes and take the average and this is my performance criteria 
+
+- # Results  
+Model Scores  
+TotalNumber of tests 200  
+TP 83  
+TN 95  
+FP 12  
+FN 10  
+Accuracy : 0.89  
+
+
+*** Positive class - majority in training***  
+Recall_True Posiive Rate : 0.8924731182795699  
+Precision_True Positive Rate : 0.8736842105263158  
+F1 positive : 0.8829787234042553  
+
+
+*** Negative class - minority in training***   
+Recall_True Negative Rate :(TN/(TN+FP))  0.8878504672897196  
+Precision_True Negative Rate : # (TN/(TN+FN)) 0.9047619047619048  
+F1 Negative : 0.8962264150943396   
+
+
+### Avg F1 score 0.8896025692492975    
+
   
+
+
 
