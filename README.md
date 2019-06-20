@@ -1,5 +1,5 @@
 # Binary Classification 
- Binary classification of the data ```train.txt``` and test the performance on ```test.txt```
+ Binary classification of the data ```train.txt``` and test the performance on ```validation.txt```
 # Install
  - Anaconda3 distribution for  Python3 https://www.anaconda.com/distribution/
 and install requirment.txt
@@ -24,4 +24,24 @@ pip install -r requirment.txt
     - Remove variable19 because it can lead to missclassification (totally correlated with Class label in train data set but not in test data set)
     - Because the data train is unbalanced and this can led to high FalsePositive or high FalseNegative so we will use SMOTE technique to generate synthetic samples
     - Because the data have many categorial features and we must encode them to number so i will encode them using oneHotencoding technique (better than label encoding because the categorial data we have don't have order relationship)
+     - save the data processed in ``` training_processed.csv``` and ```validation_processed.csv```
  
+
+- ## training Notebook Or training.py 
+  - Both have the same code 
+  - ### trainig steps
+
+    - Loading the data
+    - Splitting the data to x_train , y_train , x_test , y_test
+    - Data Normalization
+    - PCA and thats for two reason
+      - PCA can be used to reduce dimensios but in case of our data it isn't problem (because after doing OneHotEncodeing the number of columns is 43 so it is not large number)
+      - So i used PCA to reduce noise in the data by focusing on Princdipale components and remove components with low varaince (this in some cases can decrease accuracy because we lose some information but in our case accuracy have been improved ) 
+    - Use Support Vector Machine as the classifier (SVM)
+      - Use gaussian as the kernel because i think the data can be non linear separble 
+      - choose class:weight 0 to be 2 to give more importance to minority class to try also reduce the effect of data inbalancing
+      - using grid search technique try to search for best combinatio of c and gamma parameters of SVM and with some hand searching i choosed gamma = 0.0004 and c=0.1 (meaning of these values that  that i want the model to give the priority to choose good hyperplane rather than classify correctly on train data (beacuase i belive have large noise))
+    - ### Performance Criteria
+         - To judge the classifier i will not take intp account accuracy because it can be misleading because the data is unbalanced i will compute f1 scores (because f1 score take into account recall and precision for specific class ) for both classes and take the average and this is my performance criteria 
+  
+
