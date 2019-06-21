@@ -45,6 +45,7 @@ pip install -r requirment.txt
          - To judge the classifier i will not take intp account accuracy because it can be misleading because the data is unbalanced i will compute f1 scores (because f1 score take into account recall and precision for specific class ) for both classes and take the average and this is my performance criteria 
 
 - # Results  
+```
 Model Scores  
 TotalNumber of tests 200  
 TP 83  
@@ -67,7 +68,7 @@ F1 Negative : 0.8962264150943396
 
 
 ### Avg F1 score 0.8896025692492975    
-
+```
 
 ## Notes 
 ### please ignore the warning   
