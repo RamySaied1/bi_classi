@@ -40,7 +40,7 @@ pip install -r requirment.txt
     - Use Support Vector Machine as the classifier (SVM)
       - Use gaussian as the kernel because i think the data can be non linear separble 
       - choose class:weight 0 to be 2 to give more importance to minority class to try also reduce the effect of data inbalancing
-      - using grid search technique try to search for best combinatio of c and gamma parameters of SVM and with some hand searching i choosed gamma = 0.0004 and c=0.1 (meaning of these values that  that i want the model to give the priority to choose good hyperplane rather than classify correctly on train data (beacuase i belive have large noise))
+      - using grid search technique try to search for best combinatio of c and gamma parameters of SVM and with some hand searching i choosed gamma = 0.0004 and c=0.1 (meaning of these values that  that i want the model to give the priority to choose good hyperplane rather than classify correctly on train data (To prevent overfitting))
     - ### Performance Criteria
          - To judge the classifier i will not take intp account accuracy because it can be misleading because the data is unbalanced i will compute f1 scores (because f1 score take into account recall and precision for specific class ) for both classes and take the average and this is my performance criteria 
 
