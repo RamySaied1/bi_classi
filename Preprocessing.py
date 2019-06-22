@@ -53,7 +53,7 @@ def oneHotEncoding(train,test,categorical_cols,classLabel):
     
     categorical_cols.remove(classLabel)
     for col in categorical_cols:
-        oe=OneHotEncoder()
+        oe=OneHotEncoder(categories='auto')
         x=oe.fit_transform(train[col].values.reshape(-1,1)).toarray()
         dfOneHot = pd.DataFrame(x, columns = [col+"_"+str(int(i)) for i in range(x.shape[1])])
         train = pd.concat([train, dfOneHot], axis=1)
@@ -89,7 +89,7 @@ def overSampling(train,classLabel):
 # - remove variable5 because it is totally correlated with variable4
 # - remove variable17 because it is totally correlated with variable14
 # - remove variable19 because it can lead to missclassification (totally correlated with Class label in train data set but not in test data set)
-# - because the data train data is unbalanced and this can led to high FalsePositive or high FalseNegative so we will use SMOTE technique to generate synthetic samples
+# - because the data train data is unbalanced and this can led to high FalsePositive or high FalseNegative so we will use SMOTE technique to generate synthetic samples (so size of training data set will increase)
 # - because the data have many categorial features and we must encode them to number so i will encode them using oneHotencoding technique (better than label encoding because the categorial data we have don't have order relationship)
 # 
 
@@ -116,6 +116,8 @@ columns = ["variable5","variable17","variable18","variable19"]
 train.drop(columns, axis=1, inplace=True)
 test.drop(columns, axis=1, inplace=True)
 
+print ("Dealing with missing values and unwanted columns finished")
+
 
 ## label encoding
 categoryColumns=labelEncoding(train,test)
@@ -128,10 +130,18 @@ train,test,categoryColumns= oneHotEncoding(train,test,categoryColumns,"classLabe
 train.drop(categoryColumns, axis=1, inplace=True)
 test.drop(categoryColumns, axis=1, inplace=True)
 
+print("Encoding finished")
+
+
 # oversampling the training data
 train=overSampling(train,"classLabel")
+
+print("OverSampling (SMOTE) finished")
+
 
 # save the output
 train.to_csv("training_processed.csv",sep=';')
 test.to_csv("validation_processed.csv",sep=';')
+
+print ("\nPreprocessing finished \n")
 

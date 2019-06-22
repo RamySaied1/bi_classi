@@ -39,7 +39,8 @@ def showMetrics(y_test,y_predictied):
     f1Negative=2*((RecallNegative*precisionNegative)/(RecallNegative+precisionNegative))
     print(  "F1 Negative :", f1Negative  )
     
-    print (    "\n\n\n Avg F1 score",  (f1Positive+f1Negative)/2)
+    print (    "\n\n\n ******************** Avg F1 score  ",  (f1Positive+f1Negative)/2,'    **************************')
+
     print ("-"*40)
 
 
@@ -59,7 +60,7 @@ def showMetrics(y_test,y_predictied):
 #   - USe gaussian as the kernel because i think the data can be non linear separble 
 #   - choose class:weight 0 to be 2 to give more importance to minority class to try also reduce the effect of data imbalancing
 #   - using grid search technique try to search for best combinatio of c and gamma parameters of SVM and with some hand searching i choosed gamma = 0.0004 and c=0.1 (meaning of these values that  that i want the model to give the priority to choose good hyperplane rather than classify correctly on train data (beacuase i belive have large noise))
-#   - to judge the classifier i will not take intp account accuracy because it can be misleading because the data is unbalanced i will compute f1 scores (because f1 score take into account recall and precision for specific class ) for both classes and take the average and this is my performance criteria 
+# - To judge the classifier i will not take intp account accuracy because it can be misleading because the data is unbalanced i will compute f1 scores (because f1 score take into account recall and precision for specific class ) for both classes and take the average and this is my performance criteria 
 #   
 #    
 
@@ -89,6 +90,8 @@ scaler.fit(x_train)
 x_train = scaler.transform(x_train)
 x_test = scaler.transform(x_test)
 
+print ("Normalization Finished\n")
+
 
 from sklearn.decomposition import PCA
 pca = PCA(27)                              # choosing by experiement
@@ -96,6 +99,9 @@ pca.fit(x_train)
 
 x_train = pca.transform(x_train)
 x_test = pca.transform(x_test)
+
+print("PCA Finished\n")
+
 
 """
 from sklearn.model_selection import GridSearchCV
@@ -122,6 +128,9 @@ clf = SVC(kernel='rbf', class_weight={0:2},gamma=0.0004,C=0.1,tol=1e-9)
       
 # fitting x samples and y classes 
 clf.fit(x_train, y_train)
+
+print("Model Training Finished\n")
+
 
 y_predictied=clf.predict(x_test)
 
