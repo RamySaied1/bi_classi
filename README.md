@@ -40,11 +40,12 @@ pip install -r requirment.txt
     - Use Support Vector Machine as the classifier (SVM)
       - Use gaussian as the kernel because i think the data can be non linear separble 
       - choose class:weight 0 to be 2 to give more importance to minority class to try also reduce the effect of data inbalancing
-      - using grid search technique try to search for best combinatio of c and gamma parameters of SVM and with some hand searching i choosed gamma = 0.0004 and c=0.1 (meaning of these values that  that i want the model to give the priority to choose good hyperplane rather than classify correctly on train data (beacuase i belive have large noise))
+      - using grid search technique try to search for best combinatio of c and gamma parameters of SVM and with some hand searching i choosed gamma = 0.0004 and c=0.1 (meaning of these values that  that i want the model to give the priority to choose good hyperplane rather than classify correctly on train data (To prevent overfitting))
     - ### Performance Criteria
          - To judge the classifier i will not take intp account accuracy because it can be misleading because the data is unbalanced i will compute f1 scores (because f1 score take into account recall and precision for specific class ) for both classes and take the average and this is my performance criteria 
 
 - # Results  
+```
 Model Scores  
 TotalNumber of tests 200  
 TP 83  
@@ -67,10 +68,10 @@ F1 Negative : 0.8962264150943396
 
 
 ### Avg F1 score 0.8896025692492975    
-
+```
 
 ## Notes 
-please ignore the warning   
+### please ignore the warning   
   FutureWarning: The handling of integer data will change in version 0.22. Currently, the categories are determined based on the range [0, max(values)], while in the future they will be determined based on the unique values.
 If you want the future behaviour and silence this warning, you can specify "categories='auto'".
 In case you used a LabelEncoder before this OneHotEncoder to convert the categories to integers, then you can now use the OneHotEncoder directly.
