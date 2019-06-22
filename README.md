@@ -67,7 +67,7 @@ Precision_True Negative Rate : # (TN/(TN+FN)) 0.9047619047619048
 F1 Negative : 0.8962264150943396   
 
 
-### Avg F1 score 0.8896025692492975    
+************ Avg F1 score 0.8896025692492975    ***************
 ```
 
 ## Notes 
